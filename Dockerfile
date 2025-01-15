@@ -71,10 +71,10 @@ RUN mkdir -p "$USER_HOME" && \
     echo "cd $USER_HOME" >> ~/.zshrc
 
 # Set up home directory volume
-VOLUME ["${USER_HOME}"]
+VOLUME ["/home"]
 
 # Change working directory to user-defined home directory
-WORKDIR ${USER_HOME}
+WORKDIR "/home"
 
 # Start Zsh
 CMD ["/bin/zsh"]
