@@ -20,9 +20,10 @@ RUN apt-get update && apt-get install -y \
     libgdbm-dev \
     libnss3-dev \
     liblzma-dev \
-    libcapstone-dev \
     python2.7-dev \
     python-pip \
+    libcapstone-dev \
+    tmux \
     unzip \
     locales \
     && apt-get clean
@@ -32,15 +33,24 @@ RUN locale-gen en_US.UTF-8 && \
     update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 && \
     export LANG=en_US.UTF-8
 
-# Install Pwntools for Python 2.7
-RUN pip install --upgrade pip && \
-    pip install pwntools
+# Set Python default encoding to UTF-8
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+ENV PYTHONIOENCODING=UTF-8
 
-# Install GEF
-RUN wget https://github.com/hugsy/gef/archive/refs/tags/2021.10.zip && \
-    unzip 2021.10.zip && \
+# Install compatible pip version for Python 2.7
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py && \
+    python get-pip.py pip==20.3.4 && \
+    rm get-pip.py
+
+# Install Pwntools
+RUN pip install pwntools
+
+# Install GEF and move to the user's home directory
+RUN wget https://github.com/hugsy/gef/archive/refs/tags/2021.10.zip -O /tmp/gef-2021.10.zip && \
+    unzip /tmp/gef-2021.10.zip -d ~ && \
     echo "source ~/gef-2021.10/gef.py" >> ~/.gdbinit && \
-    rm -f 2021.10.zip
+    rm -f /tmp/gef-2021.10.zip
 
 # Install Oh My Zsh
 RUN sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" || true
