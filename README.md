@@ -41,7 +41,7 @@ Run the setup script:
 #### **Option 2: Build Manually**
 Build the Docker image:
    ```bash
-   docker build -t ubuntu-16.04-dev .
+   docker build --build-arg USER_HOME={your_home_dir} -t ubuntu-16.04-dev .
    ```
 
 ---
