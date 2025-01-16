@@ -52,7 +52,7 @@ You can run the container either manually or using the provided `start.sh` scrip
 ### **Option 1: Run with `start.sh`**
 1. Use the `start.sh` script to run the container:
    ```bash
-   ./start.sh /home
+   ./start.sh
    ```
 
    - If a container with the same name exists, it will be restarted.
