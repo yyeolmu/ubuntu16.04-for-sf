@@ -22,39 +22,31 @@ This repository provides a Dockerfile and setup scripts to build and run a custo
 ### 1. **Build the Docker Image**
 You can build the Docker image either manually or using the provided `setup.sh` script.
 
-#### **Option 1: Build Manually**
 1. Clone this repository:
    ```bash
    git clone https://github.com/yyeolmu/ubuntu16.04-for-sf.git
    cd ubuntu16.04-for-sf
    ```
 
-2. Build the Docker image:
-   ```bash
-   docker build -t ubuntu-16.04-dev .
-   ```
-
-#### **Option 2: Build with `setup.sh`**
-1. Run the setup script:
+#### **Option 1: Build with `setup.sh`**
+Run the setup script:
    ```bash
    ./setup.sh
    ```
    This script dynamically sets the home directory and builds the Docker image.
+
+#### **Option 2: Build Manually**
+Build the Docker image:
+   ```bash
+   docker build -t ubuntu-16.04-dev .
+   ```
 
 ---
 
 ## Run the Container
 You can run the container either manually or using the provided `start.sh` script.
 
-### **Option 1: Run Manually**
-1. Run the container and mount your home directory:
-   ```bash
-   docker run -it --name sf16.04 -v /home:/home ubuntu-16.04-dev
-   ```
-
-2. Once inside the container, you can start working in the mounted `/home` directory.
-
-### **Option 2: Run with `start.sh`**
+### **Option 1: Run with `start.sh`**
 1. Use the `start.sh` script to run the container:
    ```bash
    ./start.sh /home
@@ -62,3 +54,11 @@ You can run the container either manually or using the provided `start.sh` scrip
 
    - If a container with the same name exists, it will be restarted.
    - If no container exists, a new one will be created and started.
+
+### **Option 2: Run Manually**
+1. Run the container and mount your home directory:
+   ```bash
+   docker run -it --name sf16.04 -v /home:/home ubuntu-16.04-dev
+   ```
+
+2. Once inside the container, you can start working in the mounted `/home` directory.
