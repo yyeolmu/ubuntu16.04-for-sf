@@ -26,7 +26,7 @@ You can build the Docker image either manually or using the provided `setup.sh` 
    ```bash
    git clone https://github.com/yyeolmu/ubuntu16.04-for-sf.git
    ```
-2. Change directory
+2. Change directory:
    ```bash
    cd ubuntu16.04-for-sf
    ```
