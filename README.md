@@ -19,7 +19,7 @@ This repository provides a Dockerfile and setup scripts to build and run a custo
 
 ## Setup Instructions
 
-### 1. **Build the Docker Image**
+### Build the Docker Image
 You can build the Docker image either manually or using the provided `setup.sh` script.
 
 1. Clone this repository:
